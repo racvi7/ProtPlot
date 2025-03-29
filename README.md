@@ -4,4 +4,4 @@
 * pip install ProteinPlot
 
 ### After installing open jupyter-lab and load in the example file
-*jupyter-lab
+* jupyter-lab
