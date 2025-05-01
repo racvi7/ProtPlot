@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'ProteinPlot'
-copyright = '2025, Poku Maxi, Racz Viki, Denes Dome'
-author = 'Poku Maxi, Racz Viki, Denes Dome'
+copyright = '2025, Poku Maximilian, Racz Viktoria, Denes Dome'
+author = 'Poku Maximilian, Racz Viktoria, Denes Dome'
 release = '0.1.1.'
 
 # -- General configuration ---------------------------------------------------
@@ -25,4 +25,4 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
-#html_static_path = ['_static']
+html_static_path = ['_static']
