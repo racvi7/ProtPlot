@@ -4,17 +4,17 @@
    contain the root `toctree` directive.
 
 Welcome to ProteinPlot's documentation!
-======================================
+==============================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   intro
-   installation
-   usage
-   api
-   faq
+   #intro
+   #installation
+   #usage
+   #api
+   #faq
 
 Indices and tables
 ==================
