@@ -121,7 +121,6 @@ def plot_projection(protein_df, colorcode = 'default', atoms = 'all',
         
     if colorcode == 'default':
         ccode = {'C' : 'black', 'N' : 'blue', 'O' : 'red', 'S' : 'yellow'} #dict for coloring
-
     
     #Defining the main type of the atoms for coloring
     defined_atoms = plot_df.atom_type.values

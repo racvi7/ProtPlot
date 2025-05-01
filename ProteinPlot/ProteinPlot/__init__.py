@@ -1,2 +1,1 @@
-from .protplot import read_pdb
-from .protplot import plot_projection
+from .protplot import my_function

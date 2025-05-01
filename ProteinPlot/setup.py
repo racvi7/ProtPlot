@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ProteinPlot",   # Replace with your package name
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(),  # Finds `my_library/`
     install_requires=['numpy', 'pandas', 'matplotlib', 'jupyter'],  # Add dependencies here
     author="Poku-Racz-Denes",
