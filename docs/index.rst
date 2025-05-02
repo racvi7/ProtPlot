@@ -85,6 +85,11 @@ Examples
        figsave='6vxx_bfactor_plot.png'
    )
 
+.. image:: _static/6vxx_bfactor_plot.png
+   :alt: Static B-factor plot of 6VXX
+   :width: 600px
+   :align: center
+
 .. code-block:: python
 
    # Example 2: Overlay two structures with different color maps and atom filters
@@ -101,6 +106,11 @@ Examples
        Title='6VXX vs 7V7N Backbone Comparison',
        fig_size=(14, 12)
    )
+
+.. image:: _static/6VXX_vs_7V7N_Backbone_Comparison.png
+   :alt: Static backbone comparison of 6VXX and 7V7N
+   :width: 600px
+   :align: center
 
 
 plot_structure_3d_interactive
@@ -137,6 +147,11 @@ Examples
        Title='Interactive B-factor View of 6VXX'
    )
 
+.. image:: _static/6vxx_interactive_bfactor_plot.gif
+   :alt: Interactive B-factor plot animation
+   :width: 600px
+   :align: center
+
 .. code-block:: python
 
    # Example 2: Dual structure interactive plot with custom atom types and colors
@@ -154,5 +169,9 @@ Examples
        fig_height=1000,
        Title='Interactive Comparison: 6VXX vs 7V7N'
    )
+.. image:: _static/6vxx_vs_7v7n_interactive_plot.gif
+   :alt: Interactive comparison of 6VXX and 7V7N
+   :width: 600px
+   :align: center
 
 
