@@ -147,10 +147,7 @@ Examples
        Title='Interactive B-factor View of 6VXX'
    )
 
-.. image:: _static/6vxx_interactive_bfactor_plot.gif
-   :alt: Interactive B-factor plot animation
-   :width: 600px
-   :align: center
+
 
 .. code-block:: python
 
@@ -169,9 +166,6 @@ Examples
        fig_height=1000,
        Title='Interactive Comparison: 6VXX vs 7V7N'
    )
-.. image:: _static/6vxx_vs_7v7n_interactive_plot.gif
-   :alt: Interactive comparison of 6VXX and 7V7N
-   :width: 600px
-   :align: center
+
 
 
