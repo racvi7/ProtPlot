@@ -66,6 +66,42 @@ Static 3D scatter plot using Matplotlib to visualize protein structures from PDB
 * `alpha`, `marker`, `marker_size`: Control appearance of points.
 * `fig_size`, `Title`, `figsave`: Customize size, title, or save as image.
 
+Examples
+^^^^^^^^
+
+.. code-block:: python
+
+   # Example 1: Basic CA atom plot with B-factor gradient coloring
+   df = read_pdb('6vxx', chain='A')
+   plot_structure_3d(
+       protein_df1=df,
+       atoms1=['CA'],
+       colorcode1='b_factor',
+       marker1='o',
+       marker_size1=40,
+       alpha1=0.9,
+       Title='6VXX Alpha Carbons (B-factor Gradient)',
+       fig_size=(12, 10)
+   )
+
+.. code-block:: python
+
+   # Example 2: Overlay two structures with different color maps and atom filters
+   df1 = read_pdb('6vxx', chain='A')
+   df2 = read_pdb('1bna', chain='A')
+   plot_structure_3d(
+       protein_df1=df1,
+       protein_df2=df2,
+       atoms1=['CA'], atoms2=['CA'],
+       colorcode1={'C': 'blue'}, colorcode2={'C': 'red'},
+       marker1='o', marker2='x',
+       marker_size1=30, marker_size2=30,
+       alpha1=0.8, alpha2=0.4,
+       Title='6VXX vs 1BNA Backbone Comparison',
+       fig_size=(14, 12)
+   )
+
+
 plot_structure_3d_interactive
 -----------------------------
 
@@ -80,4 +116,42 @@ Interactive 3D protein visualization using Plotly. Allows for two structures, pe
 * `alpha`, `marker`, `marker_size`: Visual control of markers.
 * `fig_width`, `fig_height`: Control interactive canvas size.
 * `Title`, `figsave`: Title of the plot or path to save as `.html`.
+
+Examples
+^^^^^^^^
+
+.. code-block:: python
+
+   # Example 1: Interactive plot of one structure colored by B-factor
+   df = read_pdb('6vxx', chain='A')
+   plot_structure_3d_interactive(
+       protein_df1=df,
+       atoms1=['CA'],
+       colorcode1='b_factor',
+       marker1='circle',
+       marker_size1=5,
+       alpha1=0.8,
+       fig_width=1000,
+       fig_height=800,
+       Title='Interactive B-factor View of 6VXX'
+   )
+
+.. code-block:: python
+
+   # Example 2: Dual structure interactive plot with custom atom types and colors
+   df1 = read_pdb('6vxx', chain='A')
+   df2 = read_pdb('1bna', chain='A')
+   plot_structure_3d_interactive(
+       protein_df1=df1,
+       protein_df2=df2,
+       atoms1=['CA'], atoms2=['CA'],
+       colorcode1={'C': 'green'}, colorcode2={'C': 'orange'},
+       marker1='circle', marker2='x',
+       marker_size1=6, marker_size2=6,
+       alpha1=0.7, alpha2=0.4,
+       fig_width=1200,
+       fig_height=1000,
+       Title='Interactive Comparison: 6VXX vs 1BNA'
+   )
+
 
