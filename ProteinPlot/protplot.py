@@ -26,6 +26,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+import plotly.graph_objects as go
 
 import urllib.request as urllib2
 import io
@@ -204,22 +205,42 @@ def plot_structure_3d(
         if aminos != 'all':
             plot_df = plot_df[plot_df.amino_type.isin(aminos)]
 
-        if colorcode == 'default':
-            ccode = {'C': 'black', 'N': 'blue', 'O': 'red', 'S': 'yellow'}
+        use_bfactor_gradient = (colorcode == 'b_factor')
+
+        if use_bfactor_gradient:
+            scatter = ax.scatter(
+                plot_df.x.values,
+                plot_df.y.values,
+                plot_df.z.values,
+                c=plot_df.b_factor.values,
+                cmap='coolwarm',
+                alpha=alpha,
+                marker=marker,
+                s=marker_size,
+                label=f"{label_prefix}: B-factor"
+            )
+            plt.colorbar(scatter, ax=ax, label='B-factor')
         else:
-            ccode = colorcode
+            if colorcode == 'default':
+                ccode = {'C': 'black', 'N': 'blue', 'O': 'red', 'S': 'yellow'}
+            else:
+                ccode = colorcode
 
-        plot_df['defined_atoms'] = plot_df.atom_type.str[0]
-        dpg = plot_df.groupby('defined_atoms')
+            plot_df['defined_atoms'] = plot_df.atom_type.str[0]
+            dpg = plot_df.groupby('defined_atoms')
 
-        for dat, plotter in dpg:
-            if dat in ccode:
-                ax.scatter(plotter.x.values, plotter.y.values, plotter.z.values,
-                           color=ccode[dat],
-                           label=f"{label_prefix}: {dat}",
-                           alpha=alpha,
-                           marker=marker,
-                           s=marker_size)
+            for dat, plotter in dpg:
+                if dat in ccode:
+                    ax.scatter(
+                        plotter.x.values,
+                        plotter.y.values,
+                        plotter.z.values,
+                        color=ccode[dat],
+                        label=f"{label_prefix}: {dat}",
+                        alpha=alpha,
+                        marker=marker,
+                        s=marker_size
+                    )
 
     # Create plot
     fig = plt.figure(figsize=fig_size)
@@ -284,28 +305,46 @@ def plot_structure_3d_interactive(
         if aminos != 'all':
             plot_df = plot_df[plot_df.amino_type.isin(aminos)]
 
-        if colorcode == 'default':
-            ccode = {'C': 'black', 'N': 'blue', 'O': 'red', 'S': 'yellow'}
-        else:
-            ccode = colorcode
+        use_bfactor_gradient = (colorcode == 'b_factor')
+        if not use_bfactor_gradient:
+            if colorcode == 'default':
+                ccode = {'C': 'black', 'N': 'blue', 'O': 'red', 'S': 'yellow'}
+            else:
+                ccode = colorcode
+            plot_df['defined_atoms'] = plot_df.atom_type.str[0]
 
-        plot_df['defined_atoms'] = plot_df.atom_type.str[0]
-
-        for atom_type in plot_df['defined_atoms'].unique():
-            subset = plot_df[plot_df['defined_atoms'] == atom_type]
+        if use_bfactor_gradient:
             fig.add_trace(go.Scatter3d(
-                x=subset.x,
-                y=subset.y,
-                z=subset.z,
+                x=plot_df.x,
+                y=plot_df.y,
+                z=plot_df.z,
                 mode='markers',
                 marker=dict(
                     size=marker_size,
-                    color=ccode.get(atom_type, 'gray'),
+                    color=plot_df.b_factor,
+                    colorscale='RdBu_r',
+                    colorbar=dict(title='B-factor'),
                     opacity=alpha,
                     symbol=marker
                 ),
-                name=f"{label_prefix}: {atom_type}"
+                name=f"{label_prefix}: B-factor"
             ))
+        else:
+            for atom_type in plot_df['defined_atoms'].unique():
+                subset = plot_df[plot_df['defined_atoms'] == atom_type]
+                fig.add_trace(go.Scatter3d(
+                    x=subset.x,
+                    y=subset.y,
+                    z=subset.z,
+                    mode='markers',
+                    marker=dict(
+                        size=marker_size,
+                        color=ccode.get(atom_type, 'gray'),
+                        opacity=alpha,
+                        symbol=marker
+                    ),
+                    name=f"{label_prefix}: {atom_type}"
+                ))
 
     # Add first structure
     add_structure_to_plot(protein_df1, atoms1, aminos1, colorcode1, alpha1, marker1, marker_size1, 'P1')
@@ -336,7 +375,7 @@ def plot_structure_3d_interactive(
 #example2 = protplot.read_pdb('6vxx')
 #example = protplot.read_pdb('7v7n')
 
-#plot_structure_3d_interactive(example, example2, atoms1=[CA], atoms2=['CA'],colorcode1={'C': 'blue'}, colorcode2={'C': 'red'},marker_size1=4, marker_size2=6,alpha1=0.9, alpha2=0.4)
+#plot_structure_3d_interactive(example, example2, atoms1=[CA], atoms2=['CA'],colorcode1='b_factor', colorcode2={'C': 'red'},marker_size1=4, marker_size2=6,alpha1=0.9, alpha2=0.4)
 
 
     
