@@ -193,7 +193,37 @@ def plot_structure_3d(
     Title=None, figsave=None
 ):
     """
-    3D scatter plot of one or two protein structures using matplotlib.
+    Static 3D scatter plot of one or two protein structures using matplotlib.
+
+    Parameters
+    ----------
+    protein_df1, protein_df2 : pd.DataFrame
+        DataFrames from `read_pdb()` for the proteins to be plotted.
+    atoms1, atoms2 : list or 'all'
+        List of atom types to include (e.g., ['CA']) or 'all'.
+    aminos1, aminos2 : list or 'all'
+        List of amino acids to include (e.g., ['CYS']) or 'all'.
+    colorcode1, colorcode2 : dict, 'default', or 'b_factor'
+        'default' = color by atom type,
+        dict = manual color mapping,
+        'b_factor' = gradient color by B-factor.
+    alpha1, alpha2 : float
+        Transparency of markers (0.0–1.0).
+    marker1, marker2 : str
+        Matplotlib marker symbols (e.g., 'o', '^').
+    marker_size1, marker_size2 : float
+        Size of the markers.
+    fig_size : tuple
+        Size of the figure in inches (width, height).
+    Title : str
+        Title of the plot.
+    figsave : str or None
+        If provided, path to save the figure (e.g., 'plot.png').
+
+    Returns
+    -------
+    None
+        Displays a 3D scatter plot of the protein structure(s).
     """
 
     def plot_single_structure(ax, df, atoms, aminos, colorcode, alpha, marker, marker_size, label_prefix):
@@ -291,7 +321,37 @@ def plot_structure_3d_interactive(
     Title=None, figsave=None
 ):
     """
-    Interactive 3D scatter plot of one or two proteins, each customizable.
+    Interactive 3D scatter plot of one or two protein structures using Plotly.
+
+    Parameters
+    ----------
+    protein_df1, protein_df2 : pd.DataFrame
+        DataFrames from `read_pdb()` for the proteins to be plotted.
+    atoms1, atoms2 : list or 'all'
+        List of atom types to include (e.g., ['CA']) or 'all'.
+    aminos1, aminos2 : list or 'all'
+        List of amino acids to include (e.g., ['GLY']) or 'all'.
+    colorcode1, colorcode2 : dict, 'default', or 'b_factor'
+        'default' = atom type coloring,
+        dict = manual color mapping,
+        'b_factor' = color by B-factor gradient.
+    alpha1, alpha2 : float
+        Marker opacity (0.0 to 1.0).
+    marker1, marker2 : str
+        Plotly marker symbol (e.g., 'circle', 'square').
+    marker_size1, marker_size2 : float
+        Size of the marker spheres.
+    fig_width, fig_height : int
+        Size of the interactive plot in pixels.
+    Title : str
+        Optional title for the plot.
+    figsave : str or None
+        If provided, saves the plot as an interactive HTML file.
+
+    Returns
+    -------
+    None
+        Opens an interactive 3D protein visualization.
     """
 
     fig = go.Figure()
