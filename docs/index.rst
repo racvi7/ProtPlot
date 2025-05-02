@@ -71,7 +71,7 @@ Examples
 
 .. code-block:: python
 
-   # Example 1: Basic CA atom plot with B-factor gradient coloring
+   # Example 1: Basic CA atom plot with B-factor gradient coloring and saving the figure to .png
    df = protplot.read_pdb('6vxx', chain='A')
    protplot.plot_structure_3d(
        protein_df1=df,
@@ -81,7 +81,8 @@ Examples
        marker_size1=40,
        alpha1=0.9,
        Title='6VXX Alpha Carbons (B-factor Gradient)',
-       fig_size=(12, 10)
+       fig_size=(12, 10),
+       figsave='6vxx_bfactor_plot.png'
    )
 
 .. code-block:: python
@@ -97,7 +98,7 @@ Examples
        marker1='o', marker2='x',
        marker_size1=30, marker_size2=30,
        alpha1=0.8, alpha2=0.4,
-       Title='6VXX vs 1BNA Backbone Comparison',
+       Title='6VXX vs 7V7N Backbone Comparison',
        fig_size=(14, 12)
    )
 
@@ -151,7 +152,7 @@ Examples
        alpha1=0.7, alpha2=0.4,
        fig_width=1200,
        fig_height=1000,
-       Title='Interactive Comparison: 6VXX vs 1BNA'
+       Title='Interactive Comparison: 6VXX vs 7V7N'
    )
 
 
