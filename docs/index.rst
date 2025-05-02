@@ -72,8 +72,8 @@ Examples
 .. code-block:: python
 
    # Example 1: Basic CA atom plot with B-factor gradient coloring
-   df = read_pdb('6vxx', chain='A')
-   plot_structure_3d(
+   df = protplot.read_pdb('6vxx', chain='A')
+   protplot.plot_structure_3d(
        protein_df1=df,
        atoms1=['CA'],
        colorcode1='b_factor',
@@ -87,9 +87,9 @@ Examples
 .. code-block:: python
 
    # Example 2: Overlay two structures with different color maps and atom filters
-   df1 = read_pdb('6vxx', chain='A')
-   df2 = read_pdb('1bna', chain='A')
-   plot_structure_3d(
+   df1 = protplot.read_pdb('6vxx', chain='A')
+   df2 = protplot.read_pdb('1bna', chain='A')
+   protplot.plot_structure_3d(
        protein_df1=df1,
        protein_df2=df2,
        atoms1=['CA'], atoms2=['CA'],
@@ -123,8 +123,8 @@ Examples
 .. code-block:: python
 
    # Example 1: Interactive plot of one structure colored by B-factor
-   df = read_pdb('6vxx', chain='A')
-   plot_structure_3d_interactive(
+   df = protplot.read_pdb('6vxx', chain='A')
+   protplot.plot_structure_3d_interactive(
        protein_df1=df,
        atoms1=['CA'],
        colorcode1='b_factor',
@@ -139,9 +139,9 @@ Examples
 .. code-block:: python
 
    # Example 2: Dual structure interactive plot with custom atom types and colors
-   df1 = read_pdb('6vxx', chain='A')
-   df2 = read_pdb('1bna', chain='A')
-   plot_structure_3d_interactive(
+   df1 = protplot.read_pdb('6vxx', chain='A')
+   df2 = protplot.read_pdb('1bna', chain='A')
+   protplot.plot_structure_3d_interactive(
        protein_df1=df1,
        protein_df2=df2,
        atoms1=['CA'], atoms2=['CA'],
