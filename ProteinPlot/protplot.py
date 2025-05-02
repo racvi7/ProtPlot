@@ -16,7 +16,7 @@ Be aware that this package was made for a University project in Hungary, PPKE IT
 ----------------------------------------------------------------------------------------------------
 
 
-@authors: domedenes, viktoriaracz, maxilimianpoku
+@authors: domedenes, viktoriaracz, maximilianpoku
 """
 
 #-------------------------------------DEPENDENCIES--------------------------------------------------
