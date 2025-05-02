@@ -88,7 +88,7 @@ Examples
 
    # Example 2: Overlay two structures with different color maps and atom filters
    df1 = protplot.read_pdb('6vxx', chain='A')
-   df2 = protplot.read_pdb('1bna', chain='A')
+   df2 = protplot.read_pdb('7v7n', chain='A')
    protplot.plot_structure_3d(
        protein_df1=df1,
        protein_df2=df2,
@@ -140,7 +140,7 @@ Examples
 
    # Example 2: Dual structure interactive plot with custom atom types and colors
    df1 = protplot.read_pdb('6vxx', chain='A')
-   df2 = protplot.read_pdb('1bna', chain='A')
+   df2 = protplot.read_pdb('7v7n', chain='A')
    protplot.plot_structure_3d_interactive(
        protein_df1=df1,
        protein_df2=df2,
