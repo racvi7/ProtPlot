@@ -168,7 +168,7 @@ Examples
    )
 
 
-lot_ramachandran¶
+plot_ramachandran
 ==================
 
 Static 2D Ramachandran plot using Seaborn to visualize φ/ψ angles extracted from protein PDB files. The plot includes kernel density contours and annotated structural regions.
@@ -188,7 +188,7 @@ Examples:
     protplot.plot_ramachandran(angles, cmap='Blues', scat_color='blue')
 
 
-extract_phi_psi¶
+extract_phi_psi
 ================
 
 Extract φ and ψ backbone torsion angles from atomic coordinates stored in a DataFrame.
@@ -209,7 +209,7 @@ Examples:
     angles = protplot.extract_phi_psi(df)
 
 
-Protein_alignment¶
+Protein_alignment
 ==================
 
 Calculate RMSD between two protein structures by comparing Cα atoms. Compare specific chains or create a chain-to-chain heatmap.
