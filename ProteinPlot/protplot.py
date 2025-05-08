@@ -1,7 +1,4 @@
 """
-Created on Sat Mar 29 11:17:15 2025
-
-
 ----------------------------------------------------------------------------------------------------
 THIS IS THE MAIN FILE FOR PROTPLOT PROJECT
 
@@ -25,24 +22,37 @@ Be aware that this package was made for a University project in Hungary, PPKE IT
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-import plotly.graph_objects as go
 
 import urllib.request as urllib2
 import io
 
+from mpl_toolkits.mplot3d import Axes3D
+import plotly.graph_objects as go
 
-
+import seaborn as sns
+from matplotlib.colors import ListedColormap
 
 #-------------------------------------FUNCTIONS-----------------------------------------------------
 
-#---------------------------------------------------------------------------------------------------
+"""
+The following part contains the developed functions. These functions just examples for the utilization of pandas df
+versions of PDB files. If you use this package, feel free to be creative, and upgrade, modify these functions.
+
+
+"""
+
+
+
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
 #Function - read_pdb()
 
 def read_pdb(pdb_code, chain = None):
-    """
     
-
+    
+    """ 
     Parameters
     ----------
     pdb_code : TYPE str
@@ -106,14 +116,52 @@ def read_pdb(pdb_code, chain = None):
         
     return out
 
-#example = read_pdb('6vxx', chain = 'A')
-#example2 = read_pdb('6vxx')
+#example = protplot.read_pdb('6vxx', chain = 'A')
+#example2 = protplot.read_pdb('6vxx')
 
-#---------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
 #Function - plot_projection()
 
 def plot_projection(protein_df, colorcode = 'default', atoms = 'all',
                     aminos = 'all', alpha = 1, marker = 'x', Title = None, figsave = None):
+    """
+    
+
+    Parameters
+    ----------
+    protein_df : pandas df
+        A pdb file loaded into a pandas dataframe.
+        
+    colorcode : dictionary, optional
+        default : {'C' : 'black', 'N' : 'blue', 'O' : 'red', 'S' : 'yellow'}
+        a dictionary containing the color for each main atom type
+        
+    atoms : str, optional
+        which atoms to be plotted
+        
+    aminos : str, optional
+        which AAs to be plotted
+        
+    alpha : 0-1 float, optional
+        transpancy of the markes
+        
+    marker : str, optional
+       types of the markers
+       
+    Title : str, optional
+        title for the figure
+    figsave : str, optional
+        figname, if the export is desired
+
+    Returns
+    -------
+    A matplotlib figure with 2D slices of a protein
+
+    """
+    
     
     plot_df = protein_df.copy() # no modification to be made
     
@@ -125,6 +173,8 @@ def plot_projection(protein_df, colorcode = 'default', atoms = 'all',
         
     if colorcode == 'default':
         ccode = {'C' : 'black', 'N' : 'blue', 'O' : 'red', 'S' : 'yellow'} #dict for coloring
+    else:
+        ccode = colorcode.copy()
     
     #Defining the main type of the atoms for coloring
     defined_atoms = plot_df.atom_type.values
@@ -169,23 +219,24 @@ def plot_projection(protein_df, colorcode = 'default', atoms = 'all',
         plt.savefig(figsave, dpi = 200)
         
     plt.show()
-        
-        
-        
-        
     
-#plot_projection(example2, alpha = 0.55,aminos = ['CYS'], atoms = ['CA', 'SG'], 
-                #Title = 'Test projection plot', figsave = 'test.jpg')
-
-#---------------------------------------------------------------------------------------------------
+#protplot.plot_projection(example, alpha = 0.55, aminos = ['CYS'], atoms = ['CA', 'SG'], 
+#                Title = 'Test projection plot', figsave = 'test25.jpg')
+    
+ 
+    
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
 # Function - plot_structure_3d()
 
 def plot_structure_3d(
     protein_df1,
-    protein_df2=None,
-    atoms1='all', atoms2='all',
-    aminos1='all', aminos2='all',
-    colorcode1='default', colorcode2='default',
+    protein_df2 = None,
+    atoms1 = 'all', atoms2 = 'all',
+    aminos1 = 'all', aminos2 = 'all',
+    colorcode1 = 'default', colorcode2 = 'default',
     alpha1=1.0, alpha2=1.0,
     marker1='o', marker2='x',
     marker_size1=20, marker_size2=20,
@@ -298,13 +349,19 @@ def plot_structure_3d(
 
 #example usage:
 
-#example2 = protplot.read_pdb('6vxx')
-#example = protplot.read_pdb('7v7n')
+# example2 = protplot.read_pdb('6vxx')
+# example = protplot.read_pdb('7v7n')
+# protplot.plot_structure_3d(example, example2, atoms1=['C'], atoms2=['C'], colorcode1={'C': 'green'}, colorcode2={'C': 'red'}, alpha1=0.9, alpha2=0.5, marker1='o', marker2='^',marker_size1=40, marker_size2=60)
 
-#plot_structure_3d(example, example2, atoms1=['CA'], atoms2=['CA'], colorcode1={'C': 'green'}, colorcode2={'C': 'red'}, alpha1=0.9, alpha2=0.5, marker1='o', marker2='^',marker_size1=40, marker_size2=60)
 
-#---------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
 #Function - plot_structure_3d()
+
 # This function is an interactive version of the plot_structure_3d function using Plotly.
 
 
@@ -430,17 +487,280 @@ def plot_structure_3d_interactive(
 
     fig.show()
     
-
+    print('If the object is not showing, then you should save it as a HTML object, and open it independently from your IDE')
+    
 #example usage:
-#example2 = protplot.read_pdb('6vxx')
-#example = protplot.read_pdb('7v7n')
+# example2 = protplot.read_pdb('6vyb')
+# example = protplot.read_pdb('7v7n')
 
-#plot_structure_3d_interactive(example, example2, atoms1=[CA], atoms2=['CA'],colorcode1='b_factor', colorcode2={'C': 'red'},marker_size1=4, marker_size2=6,alpha1=0.9, alpha2=0.4)
+# protplot.plot_structure_3d_interactive(example2, atoms1=['CA'], colorcode1='b_factor', marker_size1=4, alpha1=0.9, figsave = 'test.html')
 
+
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+
+#FUNCTIONS FOR RAMACHADRAN PLOT
+def calculate_dihedral(p1, p2, p3, p4):
+    """
+    Calculate the dihedral angle (in degrees) between four 3D points.
+
+    Parameters:
+        p1, p2, p3, p4: np.ndarray
+            3D coordinates of four consecutive atoms.
+
+    Returns:
+        float: Dihedral angle in degrees.
+    """
+    b0 = -1.0 * (p2 - p1)
+    b1 = p3 - p2
+    b2 = p4 - p3
+
+    b1 /= np.linalg.norm(b1)
+    v = b0 - np.dot(b0, b1) * b1
+    w = b2 - np.dot(b2, b1) * b1
+
+    x = np.dot(v, w)
+    y = np.dot(np.cross(b1, v), w)
+    return np.degrees(np.arctan2(y, x))
+
+def extract_phi_psi(df):
+    """
+    Extract phi and psi angles from a DataFrame of atomic coordinates.
+
+    Parameters:
+        df: pandas.DataFrame
+            Must contain columns: ['atom_type', 'amino_index', 'x', 'y', 'z'].
+
+    Returns:
+        np.ndarray: Array of (phi, psi) tuples.
+    """
+    df = df[df['atom_type'].isin(['N', 'CA', 'C'])].copy()
+    df = df.sort_values(by=['amino_index', 'atom_type'])
+
+    # Build residue-wise coordinate dictionary
+    residues = {}
+    for res_id, group in df.groupby('amino_index'):
+        atom_coords = {row['atom_type']: np.array([row['x'], row['y'], row['z']])
+                       for _, row in group.iterrows()}
+        if {'N', 'CA', 'C'}.issubset(atom_coords):
+            residues[res_id] = atom_coords
+
+    # Compute φ/ψ angles
+    sorted_keys = sorted(residues.keys())
+    angles = []
+
+    for i in range(1, len(sorted_keys) - 1):
+        prev_res = residues[sorted_keys[i - 1]]
+        this_res = residues[sorted_keys[i]]
+        next_res = residues[sorted_keys[i + 1]]
+
+        try:
+            phi = calculate_dihedral(prev_res['C'], this_res['N'], this_res['CA'], this_res['C'])
+            psi = calculate_dihedral(this_res['N'], this_res['CA'], this_res['C'], next_res['N'])
+            angles.append((phi, psi))
+        except:
+            continue
+
+    return np.array(angles)
+
+def plot_ramachandran(angles, cmap = 'Blues', scat_color = 'blue'):
+    """
+    Plots a Ramachandran plot with 2-level density contours and region labels.
+
+    Parameters:
+        angles (np.ndarray): Array of (phi, psi) angle pairs.
+    """
+    if len(angles) == 0:
+        print("No valid φ/ψ angles to plot.")
+        return
+
+    phi, psi = angles[:, 0], angles[:, 1]
+
+    plt.figure(figsize=(8, 8))
+
+    levels = [.01, .1, .2, .3, .5, .7, .9, 1]
+
+    # Filled KDE
+    sns.kdeplot(
+        x=phi,
+        y=psi,
+        fill=True,
+        cmap=cmap,
+        bw_adjust=0.7,
+        levels=levels,
+        thresh=1
+    )
+
+    #Contour lines
+    sns.kdeplot(
+        x=phi,
+        y=psi,
+        color='gray',
+        bw_adjust=0.7,
+        levels=levels,
+        linewidths=1
+    )
+    
+    plt.scatter(phi, psi, marker = '.', color = scat_color, alpha = 0.15)
+    
+    # Structural region labels
+    plt.text(-40, -40, 'α Helix', fontsize=14, color='black', fontweight = 'bold')
+    plt.text(-100, 100, 'β Sheet', fontsize=14, color='black', fontweight = 'bold')
+    plt.text(50, 5, 'Left-handed α Helix', fontsize=14, color='black', fontweight = 'bold')
+
+    plt.xlabel('Phi (φ)', fontsize=14)
+    plt.ylabel('Psi (ψ)', fontsize=14)
+    plt.title('Ramachandran Plot ', fontsize=18)
+    plt.xlim(-180, 180)
+    plt.ylim(-180, 180)
+    plt.grid(True, color = 'lightgrey')
+    plt.axhline(0, color='black', linestyle='-', linewidth = 2)
+    plt.axvline(0, color='black', linestyle='-', linewidth = 2)
+    plt.show()
+
+
+# example = read_pdb('7v7n')
+# torsion = extract_phi_psi(example)
+# plot_ramachandran(torsion)
+
+
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------     
+#------------------------------------------------------------------------------------------------------
+
+
+def Protein_alignment(df1, df2, chains = 'Combo_matrix'):
+    '''
+    
+
+    Parameters
+    ----------
+    df1 : pandas dataframe
+        PDB file loaded into a pandas dataframe
+        
+    df2 : pandas dataframe
+        PDB file loaded into a pandas dataframe
+        
+    chains : list or str 'Combo_matrix', optional
+        A list of which protein chain from df1 should be compared to df2
+        Note that there is a merging step, according to the amino index
+
+    Returns RMSD value and optinonal heatmap
+    -------
+        
+
+    '''
 
     
+
+    def center_coords(coords):
+        centroid = coords.mean(axis=0)
+        return coords - centroid, centroid
+
+    def calculate_rmsd(coords1, coords2_aligned):
+        return np.sqrt(np.mean(np.sum((coords1 - coords2_aligned) ** 2, axis=1)))
     
+    if chains == 'Combo_matrix':
+        
+        c1, c2 = np.unique(df1.chain_index), np.unique(df2.chain_index)
+        
+        for_plot = []
+        for cc1 in c1:
+            for cc2 in c2:
+                
+                # Filter to Cα atoms only
+                df1_ca = df1[(df1.atom_type == "CA") & (df1.chain_index == cc1)]
+                df2_ca = df2[(df2.atom_type == "CA") & (df2.chain_index == cc2)]
+            
+                df_ca_merged = pd.merge(df1_ca, df2_ca, on = 'amino_index', suffixes = ['_1', '_2'])
+                
+                if len(df_ca_merged) == 0 :
+                    print(f'Please check data, given chains {cc1} and {cc2} have no common amino index')
+                    
+                
+                # Extract coordinates
+                coords1 = df_ca_merged[["x_1", "y_1", "z_1"]].to_numpy()
+                coords2 = df_ca_merged[["x_2", "y_2", "z_2"]].to_numpy()
+            
+                # Center both
+                coords1_centered, centroid1 = center_coords(coords1)
+                coords2_centered, centroid2 = center_coords(coords2)
+            
+                # Compute covariance matrix and SVD
+                H = np.dot(coords1_centered.T, coords2_centered)
+                U, S, Vt = np.linalg.svd(H)
+                R = np.dot(Vt.T, U.T)
+            
+                # Correct for reflection
+                if np.linalg.det(R) < 0:
+                    Vt[-1, :] *= -1
+                    R = np.dot(Vt.T, U.T)
+            
+                # Align coords2 to coords1
+                aligned_coords2 = np.dot(coords2_centered, R) + centroid1
+                rmsd = calculate_rmsd(coords1, aligned_coords2)
+                
+                for_plot.append([cc1, cc2, rmsd])
+        
+        for_plot = pd.DataFrame(for_plot, columns = ['c1', 'c2', 'rmsd'])
+        heatmap_data = for_plot.pivot(index='c1', columns='c2', values='rmsd')
+
+
+        plt.figure(figsize=(10, 8))
+        sns.heatmap(heatmap_data, annot=True, fmt=".2f", cmap='Blues')
+        
+        plt.title("Heatmap of RMSD between chains", fontsize = 16)
+        plt.xlabel("Protein 2", fontsize = 14)
+        plt.ylabel("Protein 1", fontsize = 14)
+        plt.show()
+                
     
+    elif isinstance(chains, list) and len(chains) == 2:
+        # Filter to Cα atoms only
+        df1_ca = df1[(df1.atom_type == "CA") & (df1.chain_index == chains[0])]
+        df2_ca = df2[(df2.atom_type == "CA") & (df2.chain_index == chains[1])]
+                    
+    
+        df_ca_merged = pd.merge(df1_ca, df2_ca, on = 'amino_index', suffixes = ['_1', '_2'])
+        
+        if len(df_ca_merged) == 0 :
+            print('Please check data, given chains have no common amino index')
+            return 'Abort'
+        
+        # Extract coordinates
+        coords1 = df_ca_merged[["x_1", "y_1", "z_1"]].to_numpy()
+        coords2 = df_ca_merged[["x_2", "y_2", "z_2"]].to_numpy()
+    
+        # Center both
+        coords1_centered, centroid1 = center_coords(coords1)
+        coords2_centered, centroid2 = center_coords(coords2)
+    
+        # Compute covariance matrix and SVD
+        H = np.dot(coords1_centered.T, coords2_centered)
+        U, S, Vt = np.linalg.svd(H)
+        R = np.dot(Vt.T, U.T)
+    
+        # Correct for reflection
+        if np.linalg.det(R) < 0:
+            Vt[-1, :] *= -1
+            R = np.dot(Vt.T, U.T)
+    
+        # Align coords2 to coords1
+        aligned_coords2 = np.dot(coords2_centered, R) + centroid1
+        rmsd = calculate_rmsd(coords1, aligned_coords2)
+        
+        print(f"RMSD after alignment (CA atoms): {rmsd:.3f} Å")
+
+    else:
+        print('Please define chains correctly')
     
         
+# e1, e2 = protplot.read_pdb('7lym'), read_pdb('7lyn')
+# protplot.Protein_alignment(e1, e2, chains = 'Combo_matrix')
+
+
+
     

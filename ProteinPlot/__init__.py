@@ -1,1 +1,1 @@
-from .protplot import my_function
+from .protplot import *

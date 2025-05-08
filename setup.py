@@ -1,21 +1,20 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="ProteinPlot",   # Replace with your package name
-    version="1.0.2",
-    packages=find_packages(),  # Finds `my_library/`
-    install_requires=['numpy', 'pandas', 'matplotlib', 'jupyter'],  # Add dependencies here
+    name="ProteinPlot",
+    version="2.0.1",
+    packages=find_packages(),
+    install_requires=['numpy', 'pandas', 'matplotlib', 'jupyter', 'plotly', 'seaborn'], 
     author="Poku-Racz-Denes",
-    author_email="your.email@example.com",
+    author_email="denes.dome@gmail.com",
     description="Library for managing .pdb extension, plotting",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/my_library",  # Optional
+    url="https://protplot.readthedocs.io/en/latest/",
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: Other/Proprietary License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",  # Adjust based on your needs
-)
+    python_requires=">=3.6",)
 
