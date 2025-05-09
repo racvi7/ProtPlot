@@ -70,7 +70,8 @@ Documentation
    :maxdepth: 2
    :caption: Contents:
 
-    visualization
-    input-output
-    structure_comparison
+   visualization
+   structure_comparison
+   input-potput
+
    
