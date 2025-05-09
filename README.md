@@ -11,20 +11,20 @@ Introduction
 ProteinPlot helps in the analysis of PDB entries. The given files from the databank of rcsb.org is loaded into pandas dataframes and in this way manipulations become easier. In this package a few examples can be found for protein structure visualization.
 
 Description
---------
-- PDB entry reading into pandas df:
-    ** Easy to use function, directly downloading the protein file from the rcsb.org databank
-  
-- Structure alignment and comparison
-    ** A very basic alignment tool for finding similar protein chains between two pdb entries
-    ** Torsion angle calculations between arbitrary defined atoms
+-------------
+- **PDB entry reading into pandas df**  
+  Easy-to-use function, directly downloading the protein file from the RCSB.org databank.
 
-- Ramachadran plots
-    ** Eye catching Ramachadran plots, showing the distribtions of the secondary structures
-  
-- 2D and 3D figures
-   ** Slice plots for 2D visualization of protein structures
-   ** Static and interactive 3D visualizations
+- **Structure alignment and comparison**  
+  - A very basic alignment tool for finding similar protein chains between two PDB entries.  
+  - Torsion angle calculations between arbitrarily defined atoms.
+
+- **Ramachandran plots**  
+  Eye-catching Ramachandran plots, showing the distributions of secondary structures.
+
+- **2D and 3D figures**  
+  - Slice plots for 2D visualization of protein structures.  
+  - Static and interactive 3D visualizations.
 
 Installation
 ------------
@@ -39,11 +39,11 @@ Requirements
 
 The installation via peep automatically pulls the newest version of the following packages:
 
-** numpy
-** pandas
-** seaborn
-** matplotlib
-** plotly
+- numpy
+- pandas
+- seaborn
+- matplotlib
+- plotly
 
 For convinience, if you install this package into a fresh directory, **jupyter** is installed and you have a basic local IDE for managing your work.
 
