@@ -33,6 +33,11 @@ Description
   - Slice plots for 2D representation of protein structures.  
   - Static and interactive 3D plots using Plotly and Matplotlib.
 
+.. image:: _static/Abstract.png
+   :alt: Graphical abstract
+   :width: 600px
+   :align: center
+
 Installation
 ------------
 
