@@ -15,17 +15,21 @@ ProteinPlot aids in the analysis of PDB entries. Files from the RCSB Protein Dat
 Description
 -----------
 
-- **PDB entry reading into pandas DataFrames**  
-  Download and load PDB files directly from rcsb.org into pandas for easy processing.
+- **PDB entry reading into pandas DataFrames**
 
-- **Structure alignment and comparison**  
+  - Download and load PDB files directly from rcsb.org into pandas for easy processing.
+
+- **Structure alignment and comparison**
+
   - Basic chain alignment tools for identifying structural similarity between two PDB entries.  
   - Torsion angle calculations between user-defined atoms.
 
-- **Ramachandran plots**  
-  Generate informative Ramachandran plots to visualize secondary structure distributions.
+- **Ramachandran plots**
 
-- **2D and 3D visualizations**  
+  - Generate informative Ramachandran plots to visualize secondary structure distributions.
+
+- **2D and 3D visualizations**
+
   - Slice plots for 2D representation of protein structures.  
   - Static and interactive 3D plots using Plotly and Matplotlib.
 
