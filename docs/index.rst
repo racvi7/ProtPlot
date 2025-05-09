@@ -73,6 +73,6 @@ Documentation
 
    visualization
    structure_comparison
-   input-potput
+   input-output
 
    
