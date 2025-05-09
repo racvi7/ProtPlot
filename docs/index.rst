@@ -42,7 +42,7 @@ You can install ProteinPlot via pip:
 
    pip install ProteinPlot
 
-- PyPI page: https://pypi.org/project/ProteinPlot/  
+- PyPI page: `PyPI <https://pypi.org/project/ProteinPlot/>`_
 - Example usage: `Example Google Colab notebook <https://colab.research.google.com/drive/1C3GE2vf-RWxhAlUEDwfVW5a6ehMTbhd_?usp=sharing>`_
 
 Requirements
