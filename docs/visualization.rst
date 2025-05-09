@@ -1,8 +1,6 @@
 plot_projection
 ===============
 
-.. function:: plot_projection(protein_df, colorcode='default', atoms='all', aminos='all', alpha=1, marker='x', Title=None, figsave=None)
-
 Creates 2D scatter plots of a protein's structure projected along different axis planes (XY, XZ, and ZY).
 
 **Parameters:**
@@ -37,6 +35,26 @@ Creates 2D scatter plots of a protein's structure projected along different axis
 * Displays a Matplotlib figure with three subplots showing XY, XZ, and ZY projections.
 * Optionally saves the figure if `figsave` is specified.
 
+Example
+-------
+
+.. code-block:: python
+
+   from protplot import read_pdb, plot_projection
+
+   # Load protein structure from RCSB (chain A only)
+   df = read_pdb('7v7n', chain='A')
+
+   # Plot only CYS residues and 'CA', 'SG' atoms
+   plot_projection(
+       protein_df=df,
+       aminos=['CYS'],
+       atoms=['CA', 'SG'],
+       alpha=0.6,
+       marker='o',
+       Title='Cysteine Backbone and Side Chain',
+       figsave='cys_projection.png'
+   )
 
 plot_structure_3d
 -----------------
