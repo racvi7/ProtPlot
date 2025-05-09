@@ -2,7 +2,7 @@ Structure Comparison
 ====================
 
 Protein_alignment
-==================
+-----------------
 
 Calculate RMSD between two protein structures by comparing Cα atoms. Compare specific chains or create a chain-to-chain heatmap.
 
@@ -28,7 +28,7 @@ Examples:
 
 
 extract_phi_psi
-================
+---------------
 
 Extract φ and ψ backbone torsion angles from atomic coordinates stored in a DataFrame.
 
