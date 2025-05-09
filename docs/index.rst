@@ -1,6 +1,6 @@
 .. _index:
 
-Welcome to Protein Toolkit's documentation!
+Welcome to ProteinPlot's documentation!
 ===========================================
 
 .. toctree::
