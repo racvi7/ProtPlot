@@ -61,4 +61,4 @@ For convenience, **jupyter** is also installed to provide a basic local IDE for 
 Documentation
 -------------
 
-Full documentation is available at: 'ReadtheDocs <https://protplot.readthedocs.io/en/latest/>'_
+Full documentation is available at: `ReadtheDocs <ReadtheDocs <https://protplot.readthedocs.io/en/latest/>`_
