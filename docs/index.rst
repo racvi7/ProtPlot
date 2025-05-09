@@ -1,2 +1,10 @@
-.. include:: README.md
-   :parser: myst_parser.sphinx_
+.. _index:
+
+Welcome to Protein Toolkit's documentation!
+===========================================
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   README.md
