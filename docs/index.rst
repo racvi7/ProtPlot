@@ -47,7 +47,7 @@ Documentation
 -------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 2      #play with it
    :caption: Contents:
 
    usage
