@@ -44,13 +44,13 @@ Example
 
 .. code-block:: python
 
-   from protplot import read_pdb, plot_projection
+   from ProteinPlot import protplot
 
    # Load protein structure from RCSB (chain A only)
-   df = read_pdb('7v7n', chain='A')
+   df = protplot.read_pdb('7v7n', chain='A')
 
    # Plot only CYS residues and 'CA', 'SG' atoms
-   plot_projection(
+   protplot.plot_projection(
        protein_df=df,
        aminos=['CYS'],
        atoms=['CA', 'SG'],
@@ -59,6 +59,11 @@ Example
        Title='Cysteine Backbone and Side Chain',
        figsave='cys_projection.png'
    )
+
+.. image:: _static/projection_example.png
+   :alt: Cysteine Backbone and Side Chain projection
+   :width: 600px
+   :align: center
 
 plot_structure_3d
 -----------------
@@ -174,3 +179,41 @@ Examples
        fig_height=1000,
        Title='Interactive Comparison: 6VXX vs 7V7N'
    )
+
+Ramachandran Plot
+-----------------
+A **Ramachandran plot** is a graphical representation of the φ (*phi*) and ψ (*psi*) backbone dihedral angles in a protein, used to visualize energetically allowed conformations and assess structural quality.
+
+
+.. function:: plot_ramachandran(angles, cmap='Blues', scat_color='blue')
+
+   Plots a Ramachandran plot showing density and regions for φ and ψ angles.
+
+   **Parameters:**
+
+   - **angles** (*np.ndarray*):  
+     Output from :func:`extract_phi_psi`, containing (phi, psi) angle pairs.
+
+   - **cmap** (*str*, optional):  
+     Colormap used for density shading. Default is `'Blues'`.
+
+   - **scat_color** (*str*, optional):  
+     Color for the scatter points. Default is `'blue'`.
+
+   **Returns:**
+
+   - A Matplotlib plot displaying the Ramachandran diagram with annotated regions (α-helix, β-sheet, etc.).
+
+Example
+-------
+
+.. code-block:: python
+
+    protplot.plot_ramachandran(protplot.extract_phi_psi(GluN2B),
+                           cmap = 'Reds',
+                           scat_color = 'black') #ROSSONERI colorcode
+
+.. image:: _static/ramachandran.png
+   :alt: Ramachandran plot of GluN2B
+   :width: 600px
+   :align: center
