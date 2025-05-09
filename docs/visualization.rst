@@ -1,3 +1,43 @@
+plot_projection
+===============
+
+.. function:: plot_projection(protein_df, colorcode='default', atoms='all', aminos='all', alpha=1, marker='x', Title=None, figsave=None)
+
+   Creates 2D scatter plots of a protein's structure projected along different axis planes (XY, XZ, and ZY).
+
+   **Parameters:**
+
+   - **protein_df** (*pandas.DataFrame*):  
+     A DataFrame representing the protein structure, as returned by :func:`read_pdb`.
+
+   - **colorcode** (*dict* or `'default'`, optional):  
+     Dictionary mapping atom types to colors. Use `'default'` for predefined colors:
+     ``{'C': 'black', 'N': 'blue', 'O': 'red', 'S': 'yellow'}``.
+
+   - **atoms** (*str* or *list*, optional):  
+     Specify atom types to include (e.g., `['CA']`). Use `'all'` to include all atom types.
+
+   - **aminos** (*str* or *list*, optional):  
+     Specify amino acids to include (e.g., `['CYS']`). Use `'all'` to include all.
+
+   - **alpha** (*float*, optional):  
+     Transparency level of the markers (0.0 to 1.0). Default is 1 (fully opaque).
+
+   - **marker** (*str*, optional):  
+     Marker style for the scatter plot (e.g., `'x'`, `'o'`, `'^'`).
+
+   - **Title** (*str*, optional):  
+     Optional title for the plot.
+
+   - **figsave** (*str*, optional):  
+     If provided, saves the figure to the given file path (e.g., `'projection.png'`).
+
+   **Returns:**
+
+   - Displays a Matplotlib figure with three subplots showing XY, XZ, and ZY projections.
+   - Optionally saves the figure if `figsave` is specified.
+
+
 plot_structure_3d
 -----------------
 
