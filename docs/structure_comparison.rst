@@ -1,3 +1,6 @@
+Structure Comparison
+====================
+
 Protein_alignment
 ==================
 
