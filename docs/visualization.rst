@@ -3,7 +3,7 @@ Visualization
 
 
 plot_projection
-===============
+---------------
 
 Creates 2D scatter plots of a protein's structure projected along different axis planes (XY, XZ, and ZY).
 
