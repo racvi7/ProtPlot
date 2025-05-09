@@ -1,4 +1,3 @@
-
 Basic Input and Output
 =======================
 
